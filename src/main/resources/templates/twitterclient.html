@@ -1,0 +1,34 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title th:text="'Twitter: ' + ${actualUser}">Twitter</title>
+	</head>
+	<body>
+	<br></br>
+		<h3 th:text="'Simple Twitter - timeline @' + ${actualUser}"> </h3>
+
+		<p>This simple Twitter client web application allows You to:
+		<ul>
+			<li>show tweets for selected user</li>
+			<li>filter showing tweets by #hashtags or words</li>
+		</ul></p>
+
+		<div>
+			<form th:action="@{/getuser}">
+				<input type="text" name="username"/>
+				<input type="submit" value="Chose timeline" />
+			</form>
+			<form th:action="@{/addfilter}">
+				<input type="text" name="filter"/>
+				<input type="submit" value="Add filter" />
+			</form>
+			<form th:action="@{/clearfilters}">
+				<span style="font-weight:bold" th:text="${filters}"></span>
+				<input type="submit" value="Delete filters"/>
+			</form>
+		</div>
+
+		<p th:each="tweet:${tweets}" th:utext="${tweet.createDate} + ${tweet.text}"></p>
+
+	</body>
+</html>
