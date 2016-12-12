@@ -1,9 +1,11 @@
 package com.gatar.Service;
 
 import com.gatar.Domain.TweetDTO;
-
 import java.util.List;
 
+/**
+ * Interface used by controller class with required methods.
+ */
 public interface WebTwitterServiceInt {
     /**
      * Get list of tweets as {@link TweetDTO} objects after filtering.

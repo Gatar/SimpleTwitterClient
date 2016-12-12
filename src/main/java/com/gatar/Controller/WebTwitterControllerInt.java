@@ -3,6 +3,9 @@ package com.gatar.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestParam;
 
+/**
+ * Required methods with @RequestMapping for Controller
+ */
 public interface WebTwitterControllerInt {
     /**
      * Load start page with default feed.

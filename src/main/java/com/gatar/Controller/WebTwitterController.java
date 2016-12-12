@@ -2,7 +2,6 @@ package com.gatar.Controller;
 
 import com.gatar.Domain.TweetDTO;
 import com.gatar.Service.WebTwitterService;
-import com.gatar.Service.WebTwitterServiceInt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

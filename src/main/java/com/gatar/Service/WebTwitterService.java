@@ -27,7 +27,7 @@ public class WebTwitterService implements WebTwitterServiceInt {
     public List<TweetDTO> getTweets(String username){
         List<Tweet> tweets = getTweetListFromRepository(username);
         List<TweetDTO> tweetsDTO =
-                filterTweetsDTO(
+                filterTweetDTOList(
                 parseToTweetDTOList(tweets));
         rememberUsername(username);
         return tweetsDTO;
@@ -59,7 +59,7 @@ public class WebTwitterService implements WebTwitterServiceInt {
                 .collect(Collectors.toList());
     }
 
-    private List<TweetDTO> filterTweetsDTO(List<TweetDTO> tweetsDTO){
+    private List<TweetDTO> filterTweetDTOList(List<TweetDTO> tweetsDTO){
         if(filterWords.isEmpty()) return tweetsDTO;
         List<TweetDTO> filteredList = null;
 
@@ -73,12 +73,12 @@ public class WebTwitterService implements WebTwitterServiceInt {
 
     private TweetDTO toTweetDTO(Tweet tweet){
         TweetDTO tweetDTO = new TweetDTO();
-        tweetDTO.setText(prepareText(tweet.getText()));
+        tweetDTO.setText(createLinksInTweet(tweet.getText()));
         tweetDTO.setCreateDate(tweet.getCreatedAt().toString().substring(4,16));
         return tweetDTO;
     }
 
-    private String prepareText(String text){
+    private String createLinksInTweet(String text){
         final String PREFIX = "<a href=\"";
         final String SUFFIX = "\">link</a>";
         text = "\t" + text;
