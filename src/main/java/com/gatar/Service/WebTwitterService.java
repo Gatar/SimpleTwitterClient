@@ -73,22 +73,35 @@ public class WebTwitterService implements WebTwitterServiceInt {
 
     private TweetDTO toTweetDTO(Tweet tweet){
         TweetDTO tweetDTO = new TweetDTO();
-        tweetDTO.setText(createLinksInTweet(tweet.getText()));
+        tweetDTO.setText(tweet.getText());
+        prepareLinksInTweet(tweetDTO);
         tweetDTO.setCreateDate(tweet.getCreatedAt().toString().substring(4,16));
         return tweetDTO;
     }
 
-    private String createLinksInTweet(String text){
-        final String PREFIX = "<a href=\"";
-        final String SUFFIX = "\">link</a>";
-        text = "\t" + text;
+    private void prepareLinksInTweet(TweetDTO tweetDTO){
+        List<String> urlList = extractUrls(tweetDTO.getText());
+        fillTweetDTOLinkList(tweetDTO,urlList);
+        prepareTweetText(tweetDTO,urlList);
 
-        List<String> urlList = extractUrls(text);
+    }
+
+    private void fillTweetDTOLinkList(TweetDTO tweetDTO, List<String> urlList){
+        urlList.forEach(link -> tweetDTO.getUrl().add(link));
+    }
+
+    /**
+     * Preparing tweet text by:
+     * - erase links
+     * - add tab at the begining
+     */
+    private void prepareTweetText(TweetDTO tweetDTO, List<String> urlList){
+        String text = tweetDTO.getText();
         for(String url : urlList){
-            text = text.replaceAll(url,PREFIX+url+SUFFIX);
+            text = text.replaceAll(url,"");
         }
-
-        return text;
+        text = "\t" + text;
+        tweetDTO.setText(text);
     }
 
     private List<String> extractUrls(String text)

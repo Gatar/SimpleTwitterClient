@@ -27,8 +27,18 @@
 				<input type="submit" value="Delete filters"/>
 			</form>
 		</div>
-
-		<p th:each="tweet:${tweets}" th:utext="${tweet.createDate} + ${tweet.text}"></p>
+		<table>
+			<tr>
+				<th>Created</th>
+				<th>Tweet</th>
+				<th>Links</th>
+			</tr>
+			<tr th:each="tweet : ${tweets}">
+				<td th:text="${tweet.createDate}"></td>
+				<td th:text="${tweet.text}"></td>
+				<td><a href="twitterclient.html" th:each="link : ${tweet.url}" th:href="${link}">--Link--</a>   </td>
+			</tr>
+		</table>
 
 	</body>
 </html>

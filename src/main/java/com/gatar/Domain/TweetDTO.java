@@ -1,10 +1,14 @@
 package com.gatar.Domain;
 
+import java.util.ArrayList;
+
 public class TweetDTO {
 
     String text;
 
     String createDate;
+
+    ArrayList<String> urlList = new ArrayList<>();
 
     public String getText() {
         return text;
@@ -20,5 +24,13 @@ public class TweetDTO {
 
     public void setCreateDate(String createDate) {
         this.createDate = createDate;
+    }
+
+    public ArrayList<String> getUrl() {
+        return urlList;
+    }
+
+    public void setUrl(ArrayList<String> urlList) {
+        this.urlList = urlList;
     }
 }
