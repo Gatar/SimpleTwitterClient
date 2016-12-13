@@ -12,7 +12,7 @@ public interface WebTwitterControllerInt {
      * @param model Model
      * @return html page adress
      */
-    public String startPage(Model model);
+    String startPage(Model model);
 
     /**
      * Load tweets for from specified user timeline
@@ -20,7 +20,7 @@ public interface WebTwitterControllerInt {
      * @param username name of user for show timeline
      * @return html page adress
      */
-    public String getUser(Model model, @RequestParam("username") String username);
+    String getUser(Model model, @RequestParam("username") String username);
 
     /**
      * Add new filter word for filtering tweets adn reload page.
@@ -28,13 +28,12 @@ public interface WebTwitterControllerInt {
      * @param filterWord specified filter word
      * @return html page adress
      */
-    public String addFilter(Model model, @RequestParam("filter") String filterWord);
+    String addFilter(Model model, @RequestParam("filter") String filterWord);
 
     /**
      * Clear all filters and reload page.
      * @param model Model
      * @return html page adress
      */
-    public String clearFilters(Model model);
-
+    String clearFilters(Model model);
 }

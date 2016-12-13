@@ -5,7 +5,7 @@
 
 	<groupId>com.gatar</groupId>
 	<artifactId>webtwitter</artifactId>
-	<version>1.0.4</version>
+	<version>1.0.6</version>
 	<packaging>war</packaging>
 
 	<name>WebTwitter</name>

@@ -32,8 +32,16 @@ public interface WebTwitterServiceInt {
      */
      void addFilterWord(String word);
 
+    /**
+     * Clear all filter words.
+     */
      void clearFilters();
-    
+
+    /**
+     * SGt chosen user picture url based on tweet url
+     * @return  pictureUrl url address of picture or empty String in case of none Tweets on the list
+     */
+    String getUserPicture();
 }
 
 

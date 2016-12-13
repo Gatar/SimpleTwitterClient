@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 @Service
 public class WebTwitterService implements WebTwitterServiceInt {
 
+    private List<Tweet> tweets;
     private List<String> filterWords = new ArrayList<>();
     private String lastUsedUsername = "JAVA";
     private final WebTwitterRepository webTwitterRepository;
@@ -25,7 +26,7 @@ public class WebTwitterService implements WebTwitterServiceInt {
     }
 
     public List<TweetDTO> getTweets(String username){
-        List<Tweet> tweets = getTweetListFromRepository(username);
+        tweets = getTweetListFromRepository(username);
         List<TweetDTO> tweetsDTO =
                 filterTweetDTOList(
                 parseToTweetDTOList(tweets));
@@ -47,6 +48,11 @@ public class WebTwitterService implements WebTwitterServiceInt {
 
     public void clearFilters(){
         filterWords.clear();
+    }
+
+    public String getUserPicture(){
+        if(!tweets.isEmpty()) return tweets.get(0).getProfileImageUrl();
+        else return "";
     }
 
     private List<Tweet> getTweetListFromRepository(String username){

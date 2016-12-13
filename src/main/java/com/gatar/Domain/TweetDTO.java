@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public class TweetDTO {
 
-    String text;
+    private String text;
 
-    String createDate;
+    private String createDate;
 
-    ArrayList<String> urlList = new ArrayList<>();
+    private ArrayList<String> urlList = new ArrayList<>();
 
     public String getText() {
         return text;

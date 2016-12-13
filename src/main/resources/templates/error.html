@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title th:text="'Twitter: ' + ${actualUser}">Twitter</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="stylesheet" type="text/css" media="all" href="http://www.w3schools.com/lib/w3.css" th:href="@{http://www.w3schools.com/lib/w3.css}" />
+	</head>
+	<body>
+		<div class="w3-container w3-display-middle w3-red w3-border-bottom">
+			<div>
+					<h3>Simple Twitter Reader - ERROR!</h3>
+
+					<i><p th:text="'@' + ${actualUser} + ' timeline'"></p></i>
+
+					<p th:text="${error}"></p>
+
+			</div>
+		</div>
+	</body>
+</html>
