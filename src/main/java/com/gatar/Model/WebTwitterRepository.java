@@ -1,14 +1,11 @@
 package com.gatar.Model;
 
-import org.springframework.social.NotAuthorizedException;
-import org.springframework.social.ResourceNotFoundException;
 import org.springframework.social.twitter.api.Tweet;
 import org.springframework.social.twitter.api.Twitter;
 import org.springframework.stereotype.Repository;
 
 import javax.inject.Inject;
-import java.util.ArrayList;
-import java.util.Date;
+
 import java.util.List;
 
 /**
@@ -24,6 +21,11 @@ public class WebTwitterRepository {
         this.twitter = twitter;
     }
 
+    /**
+     * Return list of Tweets for specified username
+     * @param username value of username
+     * @return list with 20 Tweets
+     */
     public List<Tweet> getUserTimeline(String username){
          return twitter.timelineOperations().getUserTimeline(username);
     }

@@ -7,13 +7,13 @@
 		<link rel="stylesheet" type="text/css" media="all" href="http://www.w3schools.com/lib/w3.css" th:href="@{http://www.w3schools.com/lib/w3.css}" />
 	</head>
 	<body>
-		<div class="w3-container w3-display-middle w3-red w3-border-bottom">
+		<div class="w3-container w3-display-middle w3-red w3-bottombar w3-border-red ">
 			<div>
-					<h3>Simple Twitter Reader - ERROR!</h3>
+				<h3>Simple Twitter Reader - ERROR!</h3>
 
-					<i><p th:text="'@' + ${actualUser} + ' timeline'"></p></i>
-
-					<p th:text="${error}"></p>
+				<i><p th:text="'@' + ${actualUser} + ' timeline'"></p></i>
+				<p th:text="${error}"></p>
+				<a class="w3-btn w3-red w3-hover-black w3-round-large w3-btn-block" th:href="@{/getuser?username=JAVA}">Back to default</a>
 
 			</div>
 		</div>

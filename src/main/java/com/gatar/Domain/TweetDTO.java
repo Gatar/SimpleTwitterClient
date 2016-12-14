@@ -2,6 +2,7 @@ package com.gatar.Domain;
 
 import java.util.ArrayList;
 
+
 public class TweetDTO {
 
     private String text;

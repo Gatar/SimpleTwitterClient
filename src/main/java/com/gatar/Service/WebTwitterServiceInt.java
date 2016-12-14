@@ -1,6 +1,8 @@
 package com.gatar.Service;
 
 import com.gatar.Domain.TweetDTO;
+import com.gatar.Domain.Visitor;
+
 import java.util.List;
 
 /**
@@ -9,39 +11,10 @@ import java.util.List;
 public interface WebTwitterServiceInt {
     /**
      * Get list of tweets as {@link TweetDTO} objects after filtering.
-     * @param username name of profile to show it's timeline
+     * @param visitor {@link Visitor} obejct containing as minimum username String
      * @return list of tweets
      */
-     List<TweetDTO> getTweets(String username);
-
-    /**
-     * Get list of filter words.
-     * @return filter words as list of Strings
-     */
-     String getFilterWords();
-
-    /**
-     *
-     * @return get last shown username
-     */
-     String getLastUsedUsername();
-
-    /**
-     * Add to memory new filter word
-     * @param word new word to usa as filter
-     */
-     void addFilterWord(String word);
-
-    /**
-     * Clear all filter words.
-     */
-     void clearFilters();
-
-    /**
-     * SGt chosen user picture url based on tweet url
-     * @return  pictureUrl url address of picture or empty String in case of none Tweets on the list
-     */
-    String getUserPicture();
+     List<TweetDTO> getTweets(Visitor visitor);
 }
 
 

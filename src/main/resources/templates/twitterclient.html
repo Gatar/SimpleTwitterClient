@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 
 <html xmlns:th="http://www.thymeleaf.org">
+
 	<head>
-		<title th:text="'Twitter: ' + ${actualUser}">Twitter</title>
+		<title th:text="'Twitter: ' + ${visitor.username}">Twitter</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<link rel="stylesheet" type="text/css" media="all" href="http://www.w3schools.com/lib/w3.css" th:href="@{http://www.w3schools.com/lib/w3.css}" />
 	</head>
+
 	<body>
-	<div class="w3-row-padding w3-container w3-pale-green w3-border-bottom">
+	<div class="w3-row-padding w3-container w3-blue w3-border-bottom">
 		<div class="w3-half w3-center">
-				<h3>Simple Twitter Reader</h3>
-				<i><p th:text="'@' + ${actualUser} + ' timeline'"></p></i>
+				<h2  class="w3-text-shadow">Simple Twitter Reader</h2>
+				<i><p th:text="'@' + ${visitor.username} + ' timeline'"></p></i>
 		</div>
 	</div>
+
 	<div class="w3-row-padding w3-panel w3-light-grey w3-border-bottom w3-border-top w3-margin">
 		<div class="w3-half w3-margin-leaf">
 		<p>This simple Twitter client web application allows You to:
@@ -22,40 +25,36 @@
 			</ul>
 		</p>
 			<form th:action="@{/getuser}">
-				<input type="text" name="username"/>
-				<button class="w3-btn w3-green w3-hover-teal w3-round-large w3-small" type="submit">Chose timeline</button>
+				<input type="text" name="username" th:value="${visitor.username}"/>
+				<button class="w3-btn w3-light-blue w3-hover-teal w3-round-large w3-small" type="submit">Chose timeline</button>
 			</form>
 			<form th:action="@{/addfilter}">
 				<input type="text" name="filter"/>
-				<button class="w3-btn w3-green w3-hover-teal w3-round-large w3-small" type="submit">Add filter</button>
+				<button class="w3-btn w3-light-blue w3-hover-teal w3-round-large w3-small" type="submit">Add filter</button>
 			</form>
 			<form th:action="@{/clearfilters}">
-				<button class="w3-btn w3-green w3-hover-red w3-round-large w3-tiny" type="submit">Delete filters</button>
-				<span style="font-weight:bold" th:text="${filters}"></span>
+				<button class="w3-btn w3-light-blue w3-hover-red w3-round-large w3-tiny" type="submit">Delete filters</button>
+				<span> Used filter words: </span><span style="font-weight:bold" th:each="word : ${visitor.filterWords}" th:text="' [' + ${word} + ']  '"></span>
 			</form>
 		</div>
-		<div class="w3-quarter">
-
-		</div>
-
 	</div>
 
-		<div class="w3-container">
+	<div class="w3-container">
 		<table class="w3-table w3-striped">
 			<tr>
-				<thead class="w3-teal">
-					<th style="width:15%">Created</th>
-					<th>Tweet</th>
-					<th style="width:15%">Links</th>
+				<thead class="w3-indigo">
+				<th style="width:15%">Created</th>
+				<th>Tweet</th>
+				<th style="width:15%">Links</th>
 				</thead>
 			</tr>
 			<tr th:each="tweet : ${tweets}">
 				<td th:text="${tweet.createDate}"></td>
 				<td th:text="${tweet.text}"></td>
-				<td><a href="twitterclient.html" th:each="link : ${tweet.url}" th:href="${link}">. Link . </a>  </td>
+				<td><a class="w3-btn w3-blue w3-round-xxlarge w3-tiny" href="twitterclient.html" th:each="link : ${tweet.url}" th:href="${link}" th:text="Link  ">. Link . </a>  </td>
 			</tr>
 		</table>
-		</div>
+	</div>
 
 	</body>
 </html>
