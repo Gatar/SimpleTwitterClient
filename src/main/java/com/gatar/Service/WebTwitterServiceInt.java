@@ -1,7 +1,7 @@
 package com.gatar.Service;
 
-import com.gatar.Domain.TweetDTO;
-import com.gatar.Domain.Visitor;
+import com.gatar.Models.TweetDTO;
+import com.gatar.Models.User;
 
 import java.util.List;
 
@@ -11,10 +11,10 @@ import java.util.List;
 public interface WebTwitterServiceInt {
     /**
      * Get list of tweets as {@link TweetDTO} objects after filtering.
-     * @param visitor {@link Visitor} obejct containing as minimum username String
+     * @param user {@link User} obejct containing as minimum username String
      * @return list of tweets
      */
-     List<TweetDTO> getTweets(Visitor visitor);
+     List<TweetDTO> getTweets(User user);
 }
 
 

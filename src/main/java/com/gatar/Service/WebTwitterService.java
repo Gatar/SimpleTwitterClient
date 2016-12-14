@@ -1,8 +1,8 @@
 package com.gatar.Service;
 
-import com.gatar.Domain.TweetDTO;
-import com.gatar.Domain.Visitor;
-import com.gatar.Model.WebTwitterRepository;
+import com.gatar.Models.TweetDTO;
+import com.gatar.Models.User;
+import com.gatar.Repositories.WebTwitterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.social.twitter.api.Tweet;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,6 @@ import java.util.stream.Collectors;
 public class WebTwitterService implements WebTwitterServiceInt {
 
     private List<Tweet> tweets;
-    private Visitor visitor;
 
     private final WebTwitterRepository webTwitterRepository;
 
@@ -26,12 +25,11 @@ public class WebTwitterService implements WebTwitterServiceInt {
         this.webTwitterRepository = webTwitterRepository;
     }
 
-    public List<TweetDTO> getTweets(Visitor visitor){
-        this.visitor = visitor;
-        tweets = getTweetListFromRepository(visitor.getUsername());
+    public List<TweetDTO> getTweets(User user){
+        tweets = getTweetListFromRepository(user.getUsername());
         List<TweetDTO> tweetsDTO =
                 filterTweetDTOList(
-                parseToTweetDTOList(tweets));
+                parseToTweetDTOList(tweets), user);
         return tweetsDTO;
     }
 
@@ -45,12 +43,12 @@ public class WebTwitterService implements WebTwitterServiceInt {
                 .collect(Collectors.toList());
     }
 
-    private List<TweetDTO> filterTweetDTOList(List<TweetDTO> tweetsDTO){
-        if(visitor.getFilterWords().isEmpty()) return tweetsDTO;
-        List<TweetDTO> filteredList = null;
+    private List<TweetDTO> filterTweetDTOList(List<TweetDTO> tweetsDTO, User user){
+        if(user.getFilterWords().isEmpty()) return tweetsDTO;
+        List<TweetDTO> filteredList = tweetsDTO;
 
-        for(String word : visitor.getFilterWords()){
-            filteredList = tweetsDTO.stream()
+        for(String word : user.getFilterWords()){
+            filteredList = filteredList.stream()
                     .filter(t -> t.getText().toLowerCase().contains(word.toLowerCase()))
                     .collect(Collectors.toList());
         }
@@ -78,7 +76,6 @@ public class WebTwitterService implements WebTwitterServiceInt {
         List<String> urlList = extractURLs(tweetDTO.getText());
         fillTweetURLList(tweetDTO,urlList);
         removeURLsFromText(tweetDTO,urlList);
-
     }
 
     private void fillTweetURLList(TweetDTO tweetDTO, List<String> urlList){

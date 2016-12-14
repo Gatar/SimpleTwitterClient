@@ -1,4 +1,4 @@
-package com.gatar.Domain;
+package com.gatar.Models;
 
 import java.util.ArrayList;
 

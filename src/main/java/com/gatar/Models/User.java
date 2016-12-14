@@ -1,10 +1,10 @@
-package com.gatar.Domain;
+package com.gatar.Models;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Visitor implements Serializable {
+public class User implements Serializable {
 
     private String username = "JAVA";
     private List<String> filterWords = new ArrayList<>();

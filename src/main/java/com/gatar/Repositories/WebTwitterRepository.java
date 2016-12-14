@@ -1,4 +1,4 @@
-package com.gatar.Model;
+package com.gatar.Repositories;
 
 import org.springframework.social.twitter.api.Tweet;
 import org.springframework.social.twitter.api.Twitter;

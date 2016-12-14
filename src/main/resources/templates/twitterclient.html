@@ -3,7 +3,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 	<head>
-		<title th:text="'Twitter: ' + ${visitor.username}">Twitter</title>
+		<title th:text="'Twitter: ' + ${user.username}">Twitter</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<link rel="stylesheet" type="text/css" media="all" href="http://www.w3schools.com/lib/w3.css" th:href="@{http://www.w3schools.com/lib/w3.css}" />
 	</head>
@@ -12,7 +12,7 @@
 	<div class="w3-row-padding w3-container w3-blue w3-border-bottom">
 		<div class="w3-half w3-center">
 				<h2  class="w3-text-shadow">Simple Twitter Reader</h2>
-				<i><p th:text="'@' + ${visitor.username} + ' timeline'"></p></i>
+				<i><p th:text="'@' + ${user.username} + ' timeline'"></p></i>
 		</div>
 	</div>
 
@@ -25,7 +25,7 @@
 			</ul>
 		</p>
 			<form th:action="@{/getuser}">
-				<input type="text" name="username" th:value="${visitor.username}"/>
+				<input type="text" name="username" th:value="${user.username}"/>
 				<button class="w3-btn w3-light-blue w3-hover-teal w3-round-large w3-small" type="submit">Chose timeline</button>
 			</form>
 			<form th:action="@{/addfilter}">
@@ -34,7 +34,7 @@
 			</form>
 			<form th:action="@{/clearfilters}">
 				<button class="w3-btn w3-light-blue w3-hover-red w3-round-large w3-tiny" type="submit">Delete filters</button>
-				<span> Used filter words: </span><span style="font-weight:bold" th:each="word : ${visitor.filterWords}" th:text="' [' + ${word} + ']  '"></span>
+				<span> Used filter words: </span><span style="font-weight:bold" th:each="word : ${user.filterWords}" th:text="' [' + ${word} + ']  '"></span>
 			</form>
 		</div>
 	</div>
