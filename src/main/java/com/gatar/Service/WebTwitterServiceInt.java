@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface WebTwitterServiceInt {
     /**
-     * Get list of tweets as {@link TweetDTO} objects after filtering.
+     * Get list of tweets as List of {@link TweetDTO} objects after filtering.
      * @param user {@link User} obejct containing as minimum username String
      * @return list of tweets
      */

@@ -3,7 +3,7 @@ package com.gatar.Models;
 import java.util.ArrayList;
 
 
-public class TweetDTO {
+public class TweetDTO implements Comparable<TweetDTO>{
 
     private String text;
 
@@ -34,4 +34,10 @@ public class TweetDTO {
     public void setUrl(ArrayList<String> urlList) {
         this.urlList = urlList;
     }
+
+    @Override
+    public int compareTo(TweetDTO other) {
+        return text.compareTo(other.getText());
+    }
+
 }
