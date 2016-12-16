@@ -7,11 +7,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * Required methods with @RequestMapping for Controller.
- * Set session time parameters:
- * <ul>
- * <li>- for end session with close browser remove from application.properties line 'server.session.cookie.max-age='</li>
- * <li>- for set own time session  - setvalue of above parameter (in minutes)</li>
- * </ul>
  */
 public interface WebTwitterControllerInt {
     /**

@@ -6,7 +6,7 @@ import java.util.List;
 
 public class User implements Serializable {
 
-    private String username = "JAVA";
+    private String username = "Polska";
     private List<String> filterWords = new ArrayList<>();
 
     public String getUsername() {
